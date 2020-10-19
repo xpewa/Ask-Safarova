@@ -1,0 +1,62 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="row" style="margin: 30px;">
+    <div class="col-12"><h1>Мой вопрос</h1><hr></div>
+    <div class="col-4 text-center">
+        <img src="../../../static/img/my_cat.jpeg" class="question-img" style="max-width: 150px;"></img>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary">-1</button>
+            <div class="d-inline-flex p-1">0</div>
+            <button type="button" class="btn btn-success">+1</button>
+        </div>
+    </div>
+    <div class="col-8 ">
+        <div>
+            Текст <br> Текст <br> Текст
+        </div>
+
+        Теги: <a href=""><span class="badge badge-default">Тег1</span></a>
+    </div>
+</div>
+
+<div class="row question-box">
+    <div class="col-2">
+        <img src="../../../static/img/my_cat.jpeg" class="question-img"></img>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary">-1</button>
+            <div class="d-inline-flex p-1">0</div>
+            <button type="button" class="btn btn-success">+1</button>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="question-text">
+            Ответ <br> Ответ <br> Ответ
+        </div>
+
+        <div class="form-check mt-5">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Правильный ответ!</label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group mt-5">
+    <hr>
+    <label for="exampleFormControlTextarea1">Введите ответ</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+    <button type="button" class="btn btn-secondary mt-3">Ответить!</button>
+</div>
+
+<!--
+<div class="form-group mt-5">
+    <hr>
+    <p>Отвечать могут только <a href="">авторизованные</a> пользователи</p>
+</div>
+-->
+
+{% endblock %}

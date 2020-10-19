@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>
+    Новые вопросы
+    <a href="" class="btn btn-link">Топ вопросов</a>
+</h1>
+<hr>
+<div class="row question-box">
+    <div class="col-2">
+        <img src="../../../static/img/my_cat.jpeg" class="question-img"></img>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary">-1</button>
+            <div class="d-inline-flex p-1">0</div>
+            <button type="button" class="btn btn-success">+1</button>
+        </div>
+    </div>
+    <div class="col-10">
+        <a href="question"><div class="question-title">Мой вопрос</div></a>
+        <div class="question-text">
+            Текст <br> Текст <br> Текст
+        </div>
+
+        <a href="question" class="card-link mr-3">
+            Ответы (0)
+        </a>
+        Теги: <a href=""><span class="badge badge-default">Тег1</span></a>
+    </div>
+</div>
+
+<div class="mt-4 mb-4">
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" href="" tabindex="-1"><<</a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">>></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+main > .container {
+    padding: 60px 15px 0;
+}
+
+.footer {
+    background-color: #f5f5f5;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+.question-box {
+    margin-top: 30px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 20px;
+    height: 200px;
+}
+
+.question-img {
+    max-width: 100px;
+    border: 1px solid #52545a;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.question-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.answer-img {
+    max-width: 150px;
+    border: 1px solid #52545a;
+    border-radius: 4px;
+    padding: 5px;
+}
