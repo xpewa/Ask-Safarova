@@ -4,13 +4,17 @@
 <h1>Регистрация</h1>
 <hr>
 
+<div class="alert alert-danger" role="alert">
+    <strong>Данные введены неверно!</strong>
+</div>
+
 <form>
 
     <input type="hidden">
 
     <div class="form-group row">
-        <label class="col-md-3 col-form-label">Логин</label>
-        <div class="col-md-6">
+        <label class="col-md-2 col-form-label">Логин</label>
+        <div class="col-md-4">
             <input type="text" name="username" maxlength="20" class="form-control" required="" id="id_username">
 
             <small class="form-text text-muted">Логин должен быть меньше 20 символов, и состоять только из латинских смиволов.</small>
@@ -18,7 +22,7 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-md-3 col-form-label">E-mail</label>
+        <label class="col-md-2 col-form-label">E-mail</label>
         <div class="col-md-6">
             <input type="email" name="email" required="" id="id_email">
 
@@ -27,8 +31,8 @@
     </div>
 
     <div class="form-group row ">
-        <label class="col-md-3 col-form-label">Никнейм</label>
-        <div class="col-md-6">
+        <label class="col-md-2 col-form-label">Никнейм</label>
+        <div class="col-md-4">
             <input type="text" name="nick_name" maxlength="20" class="form-control" required="" id="id_nick_name">
 
             <small class="form-text text-muted">Никнейм должен быть не больше 20 символов.</small>
@@ -36,25 +40,25 @@
     </div>
 
     <div class="form-group row ">
-        <label class="col-md-3 col-form-label">Пароль</label>
+        <label class="col-md-2 col-form-label">Пароль</label>
         <div class="col-md-6">
-            <input type="password" name="password" minlength="5" maxlength="50" class="form-control" required="" id="id_password">
+            <input type="password" name="password" minlength="6" maxlength="40" class="form-control" required="" id="id_password">
 
-            <small class="form-text text-muted">Пароль должен быть не меньше 5 символов.</small>
+            <small class="form-text text-muted">Пароль должен быть не меньше 6 символов.</small>
         </div>
     </div>
 
     <div class="form-group row ">
-        <label class="col-md-3 col-form-label">Повторите пароль</label>
+        <label class="col-md-2 col-form-label">Повторите пароль</label>
         <div class="col-md-6">
-            <input type="password" name="repeat_password" minlength="5" maxlength="50" class="form-control" required="" id="id_repeat_password">
+            <input type="password" name="repeat_password" minlength="6" maxlength="40" class="form-control" required="" id="id_repeat_password">
 
             <small class="form-text text-muted"></small>
         </div>
     </div>
 
     <div class="form-group row ">
-        <label class="col-md-3 col-form-label">Аватар</label>
+        <label class="col-md-2 col-form-label">Аватар</label>
         <div class="col-md-6">
             <input type="file" name="avatar" id="id_avatar">
 

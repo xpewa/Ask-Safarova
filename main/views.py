@@ -20,3 +20,9 @@ def signup(request):
 
 def settings(request):
     return render(request, 'main/settings.html')
+
+def tag(request):
+    return render(request, 'main/tag.html')
+
+def hot(request):
+    return render(request, 'main/hot.html')
