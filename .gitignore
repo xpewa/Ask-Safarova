@@ -5,3 +5,4 @@ static/css
 static/js
 *.pyc
 __pycache__
+db.sqlite3
