@@ -3,3 +3,5 @@ node_modules
 venv
 static/css
 static/js
+*.pyc
+__pycache__
