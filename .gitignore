@@ -1,5 +1,5 @@
-.idea/
-node_modules/
-venv/
-static/css/
-static/js/
+.idea
+node_modules
+venv
+static/css
+static/js
