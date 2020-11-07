@@ -1,33 +1,7 @@
-{% extends 'main/base.html' %}
+{% extends 'main/includes/base.html' %}
 
+{% block tittle %}Новый вопрос{% endblock %}
 {% block content %}
-<h1>Новый вопрос</h1>
-<hr>
-<form class="needs-validation" novalidate>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" for="validationCustom01">Заголовок</span>
-        </div>
-        <input type="text" class="form-control" id="validationCustom01" placeholder="Заголовок" aria-label="Заголовок"
-               aria-describedby="basic-addon1">
-    </div>
-
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Текст</span>
-        </div>
-        <textarea class="form-control" aria-label="With textarea" style="height: 300px;"></textarea>
-    </div>
-
-    <div class="input-group mt-3">
-        <div class="input-group-prepend mt-3">
-            <span class="input-group-text for="validationCustom02">Теги</span>
-        </div>
-        <input type="text" class="form-control mt-3" id="validationCustom02" placeholder="Теги" aria-label="Теги"
-               aria-describedby="basic-addon1">
-    </div>
-</form>
-
-<button type="button" class="btn btn-success mt-3">Спросить!</button>
-
+{% include 'main/includes/form.html' %}
+<button type="button" class="btn btn-secondary mt-3">Спросить!</button>
 {% endblock %}

@@ -1,0 +1,15 @@
+<div class="alert alert-danger" role="alert">
+    <strong>Ошибка!</strong>
+</div>
+
+{% for field in form %}
+<div class="form-group row">
+    {% if field.label != '' %}
+    <label class="col-md-2 col-form-label">{{ field.label }}</label>
+    {% endif %}
+    <div class="col-md-7">
+        {{ field }}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+    </div>
+</div>
+{% endfor %}

@@ -1,0 +1,18 @@
+{% load static %}
+
+<div class="row mt-5">
+    <div class="col-2 text-center">
+        <img src="{% static "img/my_cat.jpeg" %}" class="rounded shadow" style="max-width: 100px;"></img>
+
+        {% include 'main/includes/rating.html' %}
+    </div>
+    <div class="col-8">
+        {{ answer.text }}
+
+        <div class="form-check mt-3">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Правильный ответ!</label>
+        </div>
+    </div>
+</div>
+<hr>

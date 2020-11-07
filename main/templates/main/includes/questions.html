@@ -1,22 +1,21 @@
+{% load static %}
+
 <div class="row question-box">
     <div class="col-2">
-        <img src="../../../static/img/my_cat.jpeg" class="question-img"></img>
+        <img src="{% static "img/my_cat.jpeg" %}" class="question-img"></img>
 
-        <div class="btn-group" role="group" aria-label="Basic example" style="margin-top: 10px;">
-            <button type="button" class="btn btn-secondary">-1</button>
-            <div class="d-inline-flex p-1">0</div>
-            <button type="button" class="btn btn-success">+1</button>
-        </div>
+        {% include 'main/includes/rating.html' %}
     </div>
     <div class="col-10">
-        <a href="question"><div class="question-title">Мой вопрос</div></a>
+        <a href="{% url 'question' pk=0 %}">
+            <div class="question-title">{{ question.title }}</div>
+        </a>
         <div class="question-text">
-            Текст <br> Текст <br> Текст
+            {{ question.text }}
         </div>
-
-        <a href="question" class="card-link mr-3">
+        <a href="{% url 'question' pk=0 %}" class="card-link mr-3">
             Ответы (0)
         </a>
-        Теги: <a href=""><span class="badge badge-default">Тег1</span></a>
+        Теги: <a href="{% url 'tag' pk=0 %}"><span class="badge badge-default">тег1</span></a>
     </div>
 </div>
