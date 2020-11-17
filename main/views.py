@@ -1,30 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage
 
-from main.forms import LoginForm, SignUpForm, SettingsForm, AskForm
+from .forms import LoginForm, SignUpForm, SettingsForm, AskForm
+from .models import Tag, Question, Answer, QuestionLike, AnswerLike
 
-questions = []
-for i in range(1,32):
-    questions.append({
-        'title': 'Заголовок ' + str(i),
-        'id': i,
-        'text': 'Текст текст текст вопроса ' + str(i)
-    })
-
-tags = []
-for i in range(1,5):
-    tags.append({
-        'id': i,
-        'tag_name': 'тег ' + str(i)
-    })
-
-answers = []
-for i in range(1,5):
-    answers.append({
-        'text': 'Текст Текст Текст '
-    })
-
-# Функция пагинации
+#Функция пагинации
 def paginate(request, objects_list, default_limit=10, pages_count=None):
     try:
         limit = int(request.GET.get('limit', default_limit))
@@ -35,7 +15,7 @@ def paginate(request, objects_list, default_limit=10, pages_count=None):
     try:
         page = int(request.GET.get('page', 1))
     except ValueError:
-        raise Http404
+        raise 404
 
     paginator = Paginator(objects_list, limit)
     try:
@@ -52,12 +32,15 @@ def paginate(request, objects_list, default_limit=10, pages_count=None):
     return page, page_range
 
 def index(request):
+    questions = Question.objects.last_questions()
     page, page_range = paginate(request, questions, 10, 5)
-    return render(request, 'main/index.html', {
+
+    context = {
         'questions': page.object_list,
         'page': page,
         'page_range': page_range,
-    })
+    }
+    return render(request, 'main/index.html', context)
 
 def ask(request):
     form = AskForm()
@@ -66,8 +49,9 @@ def ask(request):
     })
 
 
-def question(request, pk):
-    question = questions[pk]
+def question(request, pk=None):
+    question = get_object_or_404(Question, id=pk)
+    answers = question.answers.hot_answers()
     page, page_range = paginate(request, answers, 10, 5)
     return render(request, 'main/question.html', {
         'question': question,
@@ -95,10 +79,10 @@ def settings(request):
     })
 
 
-def tag(request, pk):
-    tag = tags[pk]
-    quest = questions[0:3]
-    page, page_range = paginate(request, quest, 10, 5)
+def tag(request, tag_name=None):
+    tag = get_object_or_404(Tag, name=tag_name)
+    questions = tag.question_set.last_questions()
+    page, page_range = paginate(request, questions, 10, 5)
     return render(request, 'main/tag.html', {
         'tag': tag,
         'questions': page.object_list,
@@ -107,8 +91,8 @@ def tag(request, pk):
     })
 
 def hot(request):
-    quest = questions[0:11]
-    page, page_range = paginate(request, quest, 10, 5)
+    questions = Question.objects.hot_questions()
+    page, page_range = paginate(request, questions, 10, 5)
     return render(request, 'main/hot.html', {
         'questions': page.object_list,
         'page': page,

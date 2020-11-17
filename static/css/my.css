@@ -20,14 +20,26 @@ code {
     border: 1px solid grey;
     border-radius: 10px;
     padding: 20px;
-    height: 200px;
+    height: 220px;
+
+    -webkit-box-direction: normal;
+}
+
+.question-text {
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* количество строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .question-img {
     max-width: 100px;
+    max-height: 100px;
     border: 1px solid #52545a;
-    border-radius: 4px;
-    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 5px;
 }
 
 .question-title {

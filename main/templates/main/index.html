@@ -1,12 +1,13 @@
 {% extends 'main/includes/base.html' %}
+
 {% block tittle %}
 Новые вопросы
 <a href="{% url 'hot' %}" class="btn btn-link">Топ вопросов</a>
 {% endblock %}
 
 {% block content %}
-{% for question in questions %}
-{% include 'main/includes/questions.html' %}
-{% endfor %}
-{% include 'main/includes/paginator.html' %}
+    {% for question in questions %}
+        {% include 'main/includes/questions.html' %}
+    {% endfor %}
+    {% include 'main/includes/paginator.html' %}
 {% endblock %}

@@ -6,8 +6,8 @@
 {% endblock %}
 
 {% block content %}
-{% for question in questions %}
-{% include 'main/includes/questions.html' %}
-{% endfor %}
-{% include 'main/includes/paginator.html' %}
+    {% for question in questions %}
+        {% include 'main/includes/questions.html' %}
+    {% endfor %}
+    {% include 'main/includes/paginator.html' %}
 {% endblock %}

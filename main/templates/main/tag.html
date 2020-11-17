@@ -1,10 +1,10 @@
 {% extends 'main/includes/base.html' %}
 
-{% block tittle %}Тег: {{ tag.tag_name }}{% endblock %}
+{% block tittle %}Тег: {{ tag.name }} {% endblock %}
 
 {% block content %}
-{% for question in questions %}
-{% include 'main/includes/questions.html' %}
-{% endfor %}
-{% include 'main/includes/paginator.html' %}
+    {% for question in questions %}
+        {% include 'main/includes/questions.html' %}
+    {% endfor %}
+    {% include 'main/includes/paginator.html' %}
 {% endblock %}

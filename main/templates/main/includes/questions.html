@@ -2,20 +2,28 @@
 
 <div class="row question-box">
     <div class="col-2">
-        <img src="{% static "img/my_cat.jpeg" %}" class="question-img"></img>
+        <img src={{ question.user.profile.avatar.url }} class="question-img"></img>
 
-        {% include 'main/includes/rating.html' %}
+        {% include 'main/includes/rating.html' with rating=question.rating%}
     </div>
     <div class="col-10">
-        <a href="{% url 'question' pk=0 %}">
+        <lable class="font-weight-light" style="text-align: right; float: right;">{{ question.date_create }}</lable>
+        <a href="{% url 'question' question.id %}">
             <div class="question-title">{{ question.title }}</div>
         </a>
         <div class="question-text">
             {{ question.text }}
         </div>
-        <a href="{% url 'question' pk=0 %}" class="card-link mr-3">
-            Ответы (0)
+        <div>
+        <a href="{% url 'question' question.id %}">
+            Ответы ({{ question.answers.count }})
         </a>
-        Теги: <a href="{% url 'tag' pk=0 %}"><span class="badge badge-default">тег1</span></a>
+        {% if question.tags.count > 0 %}
+        Теги:
+        {% for tag in question.tags.all %}
+        <a href="{% url 'tag' tag.name %}" class="badge badge-info">{{ tag.name }}</a>
+        {% endfor %}
+        {% endif %}
+        </div>
     </div>
 </div>

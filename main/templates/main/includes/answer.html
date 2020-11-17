@@ -2,15 +2,19 @@
 
 <div class="row mt-5">
     <div class="col-2 text-center">
-        <img src="{% static "img/my_cat.jpeg" %}" class="rounded shadow" style="max-width: 100px;"></img>
+        <img src={{ answer.user.profile.avatar.url }} class="rounded shadow" style="max-width: 100px;"></img>
 
-        {% include 'main/includes/rating.html' %}
+        {% include 'main/includes/rating.html' with rating=answer.rating %}
     </div>
     <div class="col-8">
-        {{ answer.text }}
+        <lable class="font-weight-light" style="text-align: right; float: right; margin-bottom: 5px">{{ answer.date_create }}</lable>
+        <div class="{% if answer.is_correct %}alert alert-success{% endif %}">
+            {{ answer.text }}
+        </div>
 
         <div class="form-check mt-3">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                   {% if answer.is_correct %} checked {% endif %}>
             <label class="form-check-label" for="exampleCheck1">Правильный ответ!</label>
         </div>
     </div>

@@ -29,9 +29,9 @@
                     <div class="bg-light shadow-sm mx-auto" style="width: 100%;
                     height: 250px; border-radius: 21px 0 21px 0;">
                         <p class="card-text">
-                            <a class="btn btn-link" href="{% url 'tag' pk=0 %}">тег1</a>
-                            <a class="btn btn-link" href="{% url 'tag' pk=1 %}">тег2</a>
-                            <a class="btn btn-link" href="{% url 'tag' pk=2 %}">тег3</a>
+                            {% for tag in popular_tags %}
+                            <a class="btn btn-link" href="{% url 'tag' tag.name %}">{{ tag.name }}</a>
+                            {% endfor %}
                         </p>
                     </div>
                 </div>
@@ -40,11 +40,11 @@
                     <div class="bg-light shadow-sm mx-auto" style="width: 100%;
                     height: 250px; border-radius: 0 21px 0 21px;">
                         <p class="card-text">
-                        <ol class="text-left">
-                            <li>Пользователь1</li>
-                            <li>Пользователь2</li>
-                            <li>Пользователь3</li>
-                        </ol>
+                            {% for member in best_members %}
+                                <ol class="text-left">
+                                    <li>{{ member.profile.nick_name }}</li>
+                                </ol>
+                            {% endfor %}
                         </p>
                     </div>
                 </div>
