@@ -1,8 +1,10 @@
 {% extends 'main/includes/base.html' %}
 
-{% block tittle %}Настройки: Best Cat{% endblock %}
+{% block tittle %}Настройки: {{ user.profile.nick_name }}{% endblock %}
 
 {% block content %}
-    {% include 'main/includes/form.html' %}
-    <button type="submit" class="btn btn-primary">Сохранить!</button>
+    <form action="{% url 'settings' %}?next={{ next_url }}" method="POST" enctype="multipart/form-data">
+        {% include 'main/includes/form.html' %}
+        <button type="submit" class="btn btn-primary">Сохранить!</button>
+    </form>
 {% endblock %}

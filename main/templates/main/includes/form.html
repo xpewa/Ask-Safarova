@@ -1,7 +1,10 @@
+{% for error in form.non_field_errors %}
 <div class="alert alert-danger" role="alert">
-    <strong>Ошибка!</strong>
+    <strong>Ошибка!</strong> {{ error }}
 </div>
+{% endfor %}
 
+{% csrf_token %}
 {% for field in form %}
 <div class="form-group row">
     {% if field.label != '' %}
@@ -9,6 +12,11 @@
     {% endif %}
     <div class="col-md-7">
         {{ field }}
+
+        {% for error in field.errors %}
+        <div class="form-control-feedback">{{ error }}</div>
+        {% endfor %}
+
         <small class="form-text text-muted">{{ field.help_text }}</small>
     </div>
 </div>

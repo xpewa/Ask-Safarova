@@ -7,7 +7,7 @@ from main.models import User, Tag, Question, Answer, QuestionLike, AnswerLike
 class Command(BaseCommand):
     def handle(self, *args, **options):
         # Создание пользователей
-        for i in range(0, 10001):
+        for i in range(1, 10000):
             user = User.objects.create_user("username_" + str(i),
                 password = "123456",
                 email = "email_" + str(i)
@@ -17,7 +17,7 @@ class Command(BaseCommand):
         users = User.objects.all()
 
         # Создание тегов
-        for i in range(0, 10001):
+        for i in range(1, 1000):
             try:
                 Tag(name="тег_"+str(i)).save()
             except Exception:
@@ -25,7 +25,7 @@ class Command(BaseCommand):
         tags = Tag.objects.all()
 
         # Создание вопросов
-        for i in range(0, 100001):
+        for i in range(1, 10000):
             q = Question(
                 title="Заголовок вопроса " + str(i),
                 text=("Текст вопроса " + str(i) + " ") * random.randint(1, 50),
@@ -37,7 +37,7 @@ class Command(BaseCommand):
         questions = Question.objects.all()
 
         # Создание ответов
-        for i in range(0, 1000001):
+        for i in range(1, 10000):
             Answer(
                 text=("Текст ответа " + str(i) + " ") * random.randint(1, 50),
                 is_correct=bool(random.randint(0, 1)),
@@ -47,7 +47,7 @@ class Command(BaseCommand):
         answers = Answer.objects.all()
 
         # Создание лайков вопросов
-        for _ in range(0, 1000001):
+        for _ in range(1, 10000):
             like = QuestionLike(
                 question=random.choice(questions),
                 user=random.choice(users),
@@ -61,7 +61,7 @@ class Command(BaseCommand):
             like.question.save()
 
         # Создание лайков ответов
-        for _ in range(0, 1000001):
+        for _ in range(0, 100001):
             like = AnswerLike(
                 answer=random.choice(answers),
                 user=random.choice(users),

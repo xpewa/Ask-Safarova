@@ -3,17 +3,53 @@
 {% block tittle %}Вопрос №{{ question.id }}{% endblock %}
 
 {% block content %}
-    {% include 'main/includes/questions.html' %}
+    <div class="row question-box-full">
+        <div class="col-2">
+            <img src={{ question.user.profile.avatar.url }} class="question-img"></img>
+
+            {% include 'main/includes/rating.html' with rating=question.rating %}
+        </div>
+        <div class="col-10">
+            <a href="{% url 'question' question.id %}">
+                <div class="question-title">{{ question.title }}</div>
+            </a>
+            <div class="row">
+                <div class="col-9">
+                    {{ question.text }}
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <lable class="font-weight-light text-right" style="float: right;">{{ question.date_create }}</lable>
+                        </li>
+                        <li class="list-group-item">
+                            <lable class="font-weight-light text-right" style="float: right;">{{ question.user.profile.nick_name }}</lable>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% if question.tags.count > 0 %}
+            Теги:
+            {% for tag in question.tags.all %}
+                <a href="{% url 'tag' tag.name %}" class="badge badge-info">{{ tag.name }}</a>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+
     {% for answer in answers %}
         {% include 'main/includes/answer.html' %}
     {% endfor %}
     {% include 'main/includes/paginator.html' %}
     {% if user.is_authenticated %}
-    <div class="form-group mt-5">
-        <label for="exampleFormControlTextarea1">Введите ответ</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        <button type="button" class="btn btn-secondary mt-3">Ответить!</button>
-    </div>
+    <a name="answer-form"></a>
+    <form action="{{ request.get_full_path }}#answer-form" method="POST">
+        <div class="form-group mt-5">
+            {% include 'main/includes/form.html' %}
+            <button type="submit" class="btn btn-secondary mt-3">Ответить!</button>
+        </div>
+    </form>
     {% else %}
     <div class="form-group mt-5">
         <p>Отвечать могут только <a href="{% url 'login' %}">авторизованные</a> пользователи</p>

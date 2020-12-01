@@ -3,6 +3,8 @@
 {% block tittle %}Регистрация{% endblock %}
 
 {% block content %}
-    {% include 'main/includes/form.html' %}
-    <button type="submit" class="btn btn-primary">Зарегистрироваться!</button>
+    <form action="{% url 'signup' %}?next={{ next_url }}" method="POST" enctype="multipart/form-data">
+        {% include 'main/includes/form.html' %}
+        <button type="submit" class="btn btn-primary">Зарегистрироваться!</button>
+    </form>
 {% endblock %}

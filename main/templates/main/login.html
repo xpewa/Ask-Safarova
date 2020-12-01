@@ -3,9 +3,11 @@
 {% block tittle %}Вход{% endblock %}
 
 {% block content %}
-    {% include 'main/includes/form.html' %}
-    <button type="{% url 'index' %}" class="btn btn-primary">Войти</button>
-    <div class="form-group mt-3">
-        <a href="{% url 'signup' %}">Создать новый аккаунт</a>
-    </div>
+    <form action="{% url 'login' %}?next={{ next_url }}" method="POST">
+        {% include 'main/includes/form.html' %}
+        <button type="submit" class="btn btn-primary">Войти</button>
+        <div class="form-group mt-3">
+            <a href="{% url 'signup' %}?next={{ next_url }}">Создать новый аккаунт</a>
+        </div>
+    </form>
 {% endblock %}

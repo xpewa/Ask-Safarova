@@ -6,17 +6,29 @@
 
         {% include 'main/includes/rating.html' with rating=answer.rating %}
     </div>
-    <div class="col-8">
-        <lable class="font-weight-light" style="text-align: right; float: right; margin-bottom: 5px">{{ answer.date_create }}</lable>
-        <div class="{% if answer.is_correct %}alert alert-success{% endif %}">
-            {{ answer.text }}
+    <div class="col-10">
+        <div class="row">
+            <div class="col-9 {% if answer.is_correct %}alert alert-success{% endif %}">
+                {{ answer.text }}
+            </div>
+            <div class="col-3">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <lable class="font-weight-light text-right" style="float: right;">{{ answer.date_create }}</lable>
+                    </li>
+                    <li class="list-group-item">
+                        <lable class="font-weight-light text-right" style="float: right;">{{ answer.user.profile.nick_name }}</lable>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div class="form-check mt-3">
+        {% if question.user == request.user %}
+        <div class="form-check mt-4">
             <input type="checkbox" class="form-check-input" id="exampleCheck1"
                    {% if answer.is_correct %} checked {% endif %}>
-            <label class="form-check-label" for="exampleCheck1">Правильный ответ!</label>
+            <label class="form-check-label font-weight-light" for="exampleCheck1">Правильный ответ!</label>
         </div>
+        {% endif %}
     </div>
 </div>
 <hr>

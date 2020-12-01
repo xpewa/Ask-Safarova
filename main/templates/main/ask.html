@@ -3,6 +3,8 @@
 {% block tittle %}Новый вопрос{% endblock %}
 
 {% block content %}
-    {% include 'main/includes/form.html' %}
-    <button type="button" class="btn btn-secondary mt-3">Спросить!</button>
+    <form action="{% url 'ask' %}" method="POST">
+        {% include 'main/includes/form.html' %}
+        <button type="submit" class="btn btn-secondary mt-3">Спросить!</button>
+    </form>
 {% endblock %}

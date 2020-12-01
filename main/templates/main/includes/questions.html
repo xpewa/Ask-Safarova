@@ -6,15 +6,26 @@
 
         {% include 'main/includes/rating.html' with rating=question.rating%}
     </div>
+
     <div class="col-10">
-        <lable class="font-weight-light" style="text-align: right; float: right;">{{ question.date_create }}</lable>
         <a href="{% url 'question' question.id %}">
             <div class="question-title">{{ question.title }}</div>
         </a>
-        <div class="question-text">
-            {{ question.text }}
+        <div class="row">
+            <div class="col-9 question-text">
+                {{ question.text }}
+            </div>
+            <div class="col-3">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <lable class="font-weight-light text-right" style="float: right;">{{ question.date_create }}</lable>
+                    </li>
+                    <li class="list-group-item">
+                        <lable class="font-weight-light text-right" style="float: right;">{{ question.user.profile.nick_name }}</lable>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div>
         <a href="{% url 'question' question.id %}">
             Ответы ({{ question.answers.count }})
         </a>
@@ -24,6 +35,5 @@
         <a href="{% url 'tag' tag.name %}" class="badge badge-info">{{ tag.name }}</a>
         {% endfor %}
         {% endif %}
-        </div>
     </div>
 </div>
